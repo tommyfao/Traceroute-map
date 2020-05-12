@@ -3,7 +3,7 @@ Simple python program that manually performs a traceroute and then maps it.
 
 Requires geoip2, cartopy, and matplotlib
 
-Cartopy installing guide: https://scitools.org.uk/cartopy/docs/latest/installing.html#installing
+Cartopy installation guide: https://scitools.org.uk/cartopy/docs/latest/installing.html#installing
 
 IP geolocation database from MaxMind, used under Creative Commons Attribution 4.0 License.
 
