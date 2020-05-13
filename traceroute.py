@@ -13,9 +13,9 @@ import matplotlib.pyplot as plt
 
 
 
-####################################################################################
-######FIRST get ip address list.
-####################################################################################
+#
+# FIRST get ip address list.
+#
 
 max_path=32
 
@@ -33,10 +33,11 @@ iplist=[]
 #Use ping with varying ttl's and read the ip address of the responding router
 ##
 for ttl in range(1,max_path):
-    out=os.popen("ping -W 2 -c 1 -t "+str(ttl)+ " " + destination + " | grep \"Time to live\" | awk -F \"[()]\" \'{print $2}\'").read()
+    out=os.popen("ping -W 0.5 -c 1 -t "+str(ttl)+ " " + destination + " | grep \"Time to live\" | awk -F \"[()]\" \'{print $2}\'").read()
     #out=os.popen("ping -c 1 -t "+str(ttl)+ " " + destination).read()
-    if out == last:
-        break
+#    if out == last and out != '':
+#        break
+    print(ttl)
     last=out
     iplist.append(out)
     #host=socket.gethostbyaddr(out)
@@ -45,7 +46,7 @@ for ttl in range(1,max_path):
 ####################################################################################
 #######NEXT get geo coordinates of each ip address.
 #######if the ip address is not in the database(typically private ip), ignore
-####################################################################################
+####################################################################################
 
 coords =[];
 reader = geoip2.database.Reader('GeoLite2-City.mmdb')
